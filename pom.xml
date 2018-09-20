@@ -32,6 +32,11 @@
             <name>jcenter</name>
             <url>https://jcenter.bintray.com/</url>
         </repository>
+        <repository>
+            <id>oss.sonatype.org</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+
     </repositories>
 
     <build>
@@ -68,6 +73,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>${jcabi.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.icgc.dcc</groupId>
             <artifactId>song-core</artifactId>
@@ -119,6 +129,7 @@
         <lombok.version>1.18.2</lombok.version>
         <assertj.version>3.5.2</assertj.version>
         <assertj-guava.version>3.1.0</assertj-guava.version>
+        <jcabi.version>0.22.6</jcabi.version>
     </properties>
 
 
