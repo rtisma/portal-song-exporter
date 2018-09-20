@@ -21,6 +21,7 @@ public class FilePortalUrlGenerator implements UrlGenerator {
 
   private final String serverUrl;
   private final String repoName;
+  private final String portalJQL;
 
   @Override
   @SneakyThrows
@@ -32,10 +33,6 @@ public class FilePortalUrlGenerator implements UrlGenerator {
             getFromParam(from),
             INCLUDE_PARAM,
             getSizeParam(size)));
-  }
-
-  public static FilePortalUrlGenerator createFilePortalUrlGenerator(String serverUrl, String repoName){
-    return new FilePortalUrlGenerator(serverUrl, repoName);
   }
 
   private static String getSizeParam(int size){
@@ -51,8 +48,15 @@ public class FilePortalUrlGenerator implements UrlGenerator {
 
   @SneakyThrows
   private String encodeFilter(){
-    return encode(buildRepoFilter(repoName).toString(), UTF_8.name());
+    return encode(portalJQL, UTF_8.name());
   }
 
+  public static FilePortalUrlGenerator createDefaultFilePortalUrlGenerator(String serverUrl, String repoName){
+    return new FilePortalUrlGenerator(serverUrl, repoName, buildRepoFilter(repoName).toString() );
+  }
+
+  public static FilePortalUrlGenerator createFilePortalUrlGenerator(String serverUrl, String repoName, String portalJQL){
+    return new FilePortalUrlGenerator(serverUrl, repoName, portalJQL );
+  }
 
 }
