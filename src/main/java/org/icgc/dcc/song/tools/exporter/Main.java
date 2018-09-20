@@ -18,7 +18,7 @@ import static org.icgc.dcc.song.tools.exporter.download.DownloadIterator.createD
 import static org.icgc.dcc.song.tools.exporter.download.PortalDonorIdFetcher.createPortalDonorIdFetcher;
 import static org.icgc.dcc.song.tools.exporter.download.fetcher.DataFetcher.createDataFetcher;
 import static org.icgc.dcc.song.tools.exporter.download.fetcher.DonorFetcher.createDonorFetcher;
-import static org.icgc.dcc.song.tools.exporter.download.urlgenerator.impl.FilePortalUrlGenerator.createFilePortalUrlGenerator;
+import static org.icgc.dcc.song.tools.exporter.download.urlgenerator.FilePortalUrlGenerator.createFilePortalUrlGenerator;
 import static org.icgc.dcc.song.tools.exporter.filters.BypassFilter.createBypassFilter;
 
 @Slf4j

@@ -1,10 +1,9 @@
-package org.icgc.dcc.song.tools.exporter.download.urlgenerator.impl;
+package org.icgc.dcc.song.tools.exporter.download.urlgenerator;
 
 
 import com.google.common.base.Joiner;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.icgc.dcc.song.tools.exporter.download.urlgenerator.UrlGenerator;
 
 import java.net.URL;
 
