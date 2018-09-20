@@ -100,11 +100,14 @@
     </build>
 
     <dependencies>
+        <!-- ICGC -->
         <dependency>
-            <groupId>com.jcabi</groupId>
-            <artifactId>jcabi-aspects</artifactId>
-            <version>${jcabi.version}</version>
+            <groupId>org.icgc.dcc</groupId>
+            <artifactId>dcc-common-core</artifactId>
+            <version>${dcc-common.version}</version>
         </dependency>
+
+        <!-- SONG -->
         <dependency>
             <groupId>org.icgc.dcc</groupId>
             <artifactId>song-core</artifactId>
@@ -115,17 +118,20 @@
             <artifactId>song-client</artifactId>
             <version>${song.version}</version>
         </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
+
         <!-- Utilities -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.icgc.dcc</groupId>
-            <artifactId>dcc-common-core</artifactId>
-            <version>${dcc-common.version}</version>
         </dependency>
 
         <!-- JSON -->
@@ -139,7 +145,6 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-guava</artifactId>
@@ -192,6 +197,7 @@
         <assertj-guava.version>3.1.0</assertj-guava.version>
         <jcabi.version>0.22.6</jcabi.version>
         <jackson.version>2.9.6</jackson.version>
+        <spring-core.version>5.0.9.RELEASE</spring-core.version>
     </properties>
 
 
