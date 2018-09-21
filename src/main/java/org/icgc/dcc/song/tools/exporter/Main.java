@@ -17,14 +17,16 @@ import static org.icgc.dcc.song.tools.exporter.Config.PORTAL_API_URL;
 import static org.icgc.dcc.song.tools.exporter.Config.PORTAL_FETCH_SIZE;
 import static org.icgc.dcc.song.tools.exporter.Config.PORTAL_REPO_NAME;
 import static org.icgc.dcc.song.tools.exporter.Config.SONG_COLLAB_URL;
+import static org.icgc.dcc.song.tools.exporter.parser.PortalUrlParser.extractJQLQuery;
 
 @Slf4j
 public class Main {
 
   @SneakyThrows
   public static void main(String[] args){
-    val inputJQLFile = getFileFromArgument(args);
-    val jqlQuery = readFile(inputJQLFile);
+//    val inputJQLFile = getFileFromArgument(args);
+//    val jqlQuery = readFile(inputJQLFile);
+    val jqlQuery = extractJQLQuery(args[0]);
     val factory = Factory.builder()
         .batchSize(BATCH_SIZE)
         .numThreads(NUM_THREADS)
