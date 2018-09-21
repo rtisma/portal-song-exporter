@@ -1,6 +1,7 @@
 package com.roberttisma.tools.icgc.portal.exporter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.roberttisma.tools.icgc.portal.exporter.download.fetcher.DataFetcher;
 import com.roberttisma.tools.icgc.portal.exporter.model.PortalFileMetadata;
 import lombok.Builder;
 import lombok.NonNull;
@@ -10,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.icgc.dcc.song.client.register.Registry;
 import org.icgc.dcc.song.core.model.ExportedPayload;
-import com.roberttisma.tools.icgc.portal.exporter.download.fetcher.DataFetcher;
 
 import java.io.IOException;
 import java.nio.file.Files;
