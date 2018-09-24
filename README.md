@@ -63,6 +63,15 @@ java -jar target/*-jar-with-dependencies.jar \
     --query-url 'https://dcc.icgc.org/repositories?filters=%7B%22file%22:%7B%22repoName%22:%7B%22is%22:%5B%22Collaboratory%20-%20Toronto%22%5D%7D%7D%7D&files=%7B%22from%22:1,%22size%22:25%7D'
 ```
 
+### Docker
+
+Docker can be used to run this. The following is an example
+
+```bash
+docker build --tag portal-song-exporter-image --build-arg branch=master ./
+docker run -it --name portal-song-exporter-1  -v "$(pwd)"/host_output_dir:/output_dir  portal-song-exporter-image --portal-repo-name "Collaboratory - Toronto"  --query-url 'https://icgc.org/ZzF' --song-url 'https://song.cancercollaboratory.org' --output-dir /output_dir
+```
+
 ### Notes
 1. The number of files shown in portal might not match the number of files exported. Since the software extracts the analysisId from the resulting portal files, those analyses may have files that do not fit the filter criteria from the original portal query, which could lead to a difference in numbers
 2. The objectIds found in `--portal-repo-name` must be the same as the objectIds found in the `--song-url`. The repo name corresponds to the song server that was used to index. Also, only one repo name is supported, therefore not every portal url is valid.
