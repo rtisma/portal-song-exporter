@@ -134,6 +134,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- CLI tools -->
+        <dependency>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
+            <version>${args4j.version}</version>
+        </dependency>
+
         <!-- JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -198,6 +205,7 @@
         <jcabi.version>0.22.6</jcabi.version>
         <jackson.version>2.9.6</jackson.version>
         <spring-core.version>5.0.9.RELEASE</spring-core.version>
+        <args4j.version>2.33</args4j.version>
     </properties>
 
 
