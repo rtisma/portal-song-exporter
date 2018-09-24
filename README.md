@@ -25,6 +25,6 @@ java -jar target/*-jar-with-dependencies.jar  <portal_repository_url>
 - the organization of the `outputTest` directory is `/<studyId>/<analysisId>.json` where `<studyId>` is a directory and `<analysisId>.json` is a file. There can be multiple files per studyId directory
 
 
-### Issues
+### Notes
 1. The number of files shown in portal might not match the number of files exported. Since the software extracts the analysisId from the resulting portal files, those analyses may have files that do not fit the filter criteria from the original portal query, which could lead to a difference in numbers
 
