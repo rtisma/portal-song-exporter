@@ -3,6 +3,14 @@ Portal Song Exporter
 
 This program takes a portal repository url, extracts all the files and reduces to a list of analysisIds, and then uses those analysisIds to export payloads using the song api.
 
+### Quick Start with Docker
+
+Docker can be used to run this. The following is an example
+
+```bash
+docker build --tag portal-song-exporter-image --build-arg branch=master ./
+docker run -it --name portal-song-exporter-1  -v "$(pwd)"/host_output_dir:/output_dir  portal-song-exporter-image --portal-repo-name "Collaboratory - Toronto"  --query-url 'https://icgc.org/ZzF' --song-url 'https://song.cancercollaboratory.org' --output-dir /output_dir
+```
 
 ### Building
 Ensure you have java 8 and maven 3.5.2 installed, then in the root directory run:
@@ -61,15 +69,6 @@ java -jar target/*-jar-with-dependencies.jar \
     --portal-api-url 'https://dcc.icgc.org'  \
     --output-dir my_output_dir \
     --query-url 'https://dcc.icgc.org/repositories?filters=%7B%22file%22:%7B%22repoName%22:%7B%22is%22:%5B%22Collaboratory%20-%20Toronto%22%5D%7D%7D%7D&files=%7B%22from%22:1,%22size%22:25%7D'
-```
-
-### Docker
-
-Docker can be used to run this. The following is an example
-
-```bash
-docker build --tag portal-song-exporter-image --build-arg branch=master ./
-docker run -it --name portal-song-exporter-1  -v "$(pwd)"/host_output_dir:/output_dir  portal-song-exporter-image --portal-repo-name "Collaboratory - Toronto"  --query-url 'https://icgc.org/ZzF' --song-url 'https://song.cancercollaboratory.org' --output-dir /output_dir
 ```
 
 ### Notes
