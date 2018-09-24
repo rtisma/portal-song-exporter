@@ -68,4 +68,5 @@ java -jar target/*-jar-with-dependencies.jar \
 
 ### Notes
 1. The number of files shown in portal might not match the number of files exported. Since the software extracts the analysisId from the resulting portal files, those analyses may have files that do not fit the filter criteria from the original portal query, which could lead to a difference in numbers
+2. The objectIds found in `--portal-repo-name` must be the same as the objectIds found in the `--song-url`. The repo name corresponds to the song server that was used to index. Also, only one repo name is supported, therefore not every portal url is valid.
 
