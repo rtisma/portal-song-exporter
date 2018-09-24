@@ -1,5 +1,7 @@
 package com.roberttisma.tools.icgc.portal.exporter.parser;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -12,20 +14,25 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toMap;
+import static lombok.AccessLevel.PRIVATE;
 
 @Slf4j
+@RequiredArgsConstructor(access = PRIVATE)
 public class PortalUrlParser {
 
-  private static final String PREFIX = "https://dcc.icgc.org/repositories";
+  private static final String REPOSITORIES_ENDPOINT = "/repositories";
   private static final String FILTERS = "filters";
 
-  @SneakyThrows
-  public static String extractJQLQuery(String url){
-    val finalUrl = resolveFinalUrl(url);
-    checkArgument(finalUrl.startsWith(PREFIX),
-        "The url '%s' does not start with '%s'", finalUrl, PREFIX);
+  @NonNull private final String portalApiUrl;
 
-    val encodedParams = finalUrl.replaceFirst(PREFIX+"\\?", "");
+  @SneakyThrows
+  public String extractJQLQuery(String url){
+    val urlPrefix = portalApiUrl+REPOSITORIES_ENDPOINT;
+    val finalUrl = resolveFinalUrl(url);
+    checkArgument(finalUrl.startsWith(urlPrefix),
+        "The url '%s' does not start with '%s'", finalUrl, urlPrefix);
+
+    val encodedParams = finalUrl.replaceFirst(urlPrefix+"\\?", "");
     val decodedParams = decode(encodedParams);
     val keypairs = stream(decodedParams.split("&"))
         .map(x -> x.split("="))
@@ -62,6 +69,10 @@ public class PortalUrlParser {
       connection = (HttpURLConnection) new URL(location).openConnection();
     }
     return location;
+  }
+
+  public static PortalUrlParser createPortalUrlParser(String portalApiUrl) {
+    return new PortalUrlParser(portalApiUrl.replaceAll("[/]+$", ""));
   }
 
 }

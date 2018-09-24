@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.roberttisma.tools.icgc.portal.exporter.Config.PORTAL_API_URL;
-import static com.roberttisma.tools.icgc.portal.exporter.parser.PortalUrlParser.extractJQLQuery;
+import static com.roberttisma.tools.icgc.portal.exporter.parser.PortalUrlParser.createPortalUrlParser;
 import static java.nio.file.Files.readAllBytes;
 
 @Slf4j
@@ -57,11 +57,11 @@ public class Main {
     try{
       parser.parseArgument(args);
       if (help) {
-
         val  baos = new ByteArrayOutputStream();
         parser.printUsage(baos);
         System.out.println("Usage "+baos.toString());
       } else {
+        val portalUrlParser = createPortalUrlParser(portalApiUrl);
         val factory = Factory.builder()
             .batchSize(Config.BATCH_SIZE)
             .numThreads(numThreads)
@@ -70,7 +70,7 @@ public class Main {
             .portalFetchSize(Config.PORTAL_FETCH_SIZE)
             .portalRepoName(portalRepoName)
             .songServerUrl(songUrl)
-            .jqlQuery(extractJQLQuery(queryUrl))
+            .jqlQuery(portalUrlParser.extractJQLQuery(queryUrl))
             .build();
         val portalExtractor = factory.buildPortalExtractor();
         portalExtractor.run();
@@ -97,19 +97,6 @@ public class Main {
   @SneakyThrows
   public static void main(String[] args){
     new Main().doMain(args);
-//    val jqlQuery = extractJQLQuery(args[0]);
-//    val factory = Factory.builder()
-//        .batchSize(Config.BATCH_SIZE)
-//        .numThreads(Config.NUM_THREADS)
-//        .outputDirpath(Config.OUTPUT_DIRPATH)
-//        .portalApiUrl(PORTAL_API_URL)
-//        .portalFetchSize(Config.PORTAL_FETCH_SIZE)
-//        .portalRepoName(Config.PORTAL_REPO_NAME)
-//        .songServerUrl(Config.SONG_COLLAB_URL)
-//        .jqlQuery(jqlQuery)
-//        .build();
-//    val portalExtractor = factory.buildPortalExtractor();
-//    portalExtractor.run();
   }
 
   private static Path getFileFromArgument(String[] args){
