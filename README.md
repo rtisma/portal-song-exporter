@@ -26,16 +26,13 @@ which outputs:
 Usage: 
   [--help] [--output-dir DIR] [--portal-api-url VAL] --portal-repo-name VAL --query-url VAL --song-url VAL [--threads <int>] [-h]
   --help                 : print this message (default: true)
-  --output-dir DIR       : Output directory. Default is output.<timestamp>. Will
-  create the directory if it doesnt exist (default:
-  ./output.1537807968959)
-  --portal-api-url VAL   : Url to ICGC-DCC portal. Default is
-  'https://dcc.icgc.org' (default: https://dcc.icgc.org)
+  --output-dir DIR       : Output directory. Will create the directory if it
+  doesnt exist (default: ./output.<timestamp>)
+  --portal-api-url VAL   : Url to ICGC-DCC portal (default: https://dcc.icgc.org)
   --portal-repo-name VAL : Repo name corresponding to the input query
   --query-url VAL        : ICGC-DCC portal repositories query url
   --song-url VAL         : SONG url for retrieving object metadata
-  --threads <int>        : Number of threads to use. Default 2 (default: 2)
-
+  --threads <int>        : Number of threads to use (default: 2)
 ```
 
 The organization of the `--output-dir` directory is `/<studyId>/<analysisId>.json` where `<studyId>` is a directory and `<analysisId>.json` is a file. There can be multiple files per studyId directory.

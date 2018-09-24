@@ -22,14 +22,14 @@ public class Main {
 
   private static final long TIMESTAMP = System.currentTimeMillis();
 
-  @Option(name="--threads", usage = "Number of threads to use. Default 2", metaVar = "<int>")
+  @Option(name="--threads", usage = "Number of threads to use", metaVar = "<int>")
   private int numThreads = 2;
 
-  @Option(name="--output-dir", usage = "Output directory. Default is output.<timestamp>. Will create the directory if it doesnt exist",
+  @Option(name="--output-dir", usage = "Output directory. Will create the directory if it doesnt exist",
       metaVar = "DIR")
-  private String outputDirname = "./output."+TIMESTAMP;
+  private String outputDirname = "./output.<timestamp>";
 
-  @Option(name="--portal-api-url", usage = "Url to ICGC-DCC portal. Default is '"+PORTAL_API_URL+"'")
+  @Option(name="--portal-api-url", usage = "Url to ICGC-DCC portal")
   private String portalApiUrl =  PORTAL_API_URL;
 
   @Option(name="--portal-repo-name", usage = "Repo name corresponding to the input query",required = true)
