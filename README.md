@@ -5,11 +5,22 @@ This program takes a portal repository url, extracts all the files and reduces t
 
 ### Quick Start with Docker
 
-Docker can be used to run this. The following is an example
+1. Visit the ICGC-dcc repositories search page, selected the desired filter facets on the left side and generate a link by clicking `Share` which will generated shortened url of the search results.
+https://dcc.icgc.org/repositories
 
+2. Pull down the latest Docker build
 ```bash
-docker build --tag portal-song-exporter-image --build-arg branch=master ./
-docker run -it --name portal-song-exporter-1  -v "$(pwd)"/host_output_dir:/output_dir  portal-song-exporter-image --portal-repo-name "Collaboratory - Toronto"  --query-url 'https://icgc.org/ZzF' --song-url 'https://song.cancercollaboratory.org' --output-dir /output_dir
+docker pull rtisma/portal-song-exporter:latest
+```
+3. Run the Docker image
+
+**Linux/MacOSX**
+```bash
+docker run -it --rm --name portal-song-exporter  -v "$(pwd)"/host_output_dir:/output_dir rtisma1/portal-song-exporter:latest --output-dir /output_dir --threads 7 --portal-repo-name "Collaboratory - Toronto"  --query-url 'https://icgc.org/ZzF' --song-url 'https://song.cancercollaboratory.org' 
+```
+**Windows**
+```bash
+docker run -it --rm --name portal-song-exporter  -v C:\Windows\TEMP\host_output_dir:/output_dir rtisma1/portal-song-exporter:latest --output-dir /output_dir --threads 7 --portal-repo-name "Collaboratory - Toronto"  --query-url 'https://icgc.org/ZzF' --song-url 'https://song.cancercollaboratory.org' 
 ```
 
 ### Building
