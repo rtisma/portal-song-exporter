@@ -10,7 +10,7 @@ https://dcc.icgc.org/repositories
 
 2. Pull down the latest Docker build
 ```bash
-docker pull rtisma/portal-song-exporter:latest
+docker pull rtisma1/portal-song-exporter:latest
 ```
 3. Run the Docker image
 
