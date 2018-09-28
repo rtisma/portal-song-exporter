@@ -1,7 +1,7 @@
 Portal Song Exporter
 ---
 
-This program takes a portal repository url, extracts all the files and reduces to a list of analysisIds, and then uses those analysisIds to export payloads using the song api.
+This program takes a portal repository url, extracts all the files and reduces to a set of analysisIds, and then uses those analysisIds to export payloads using the song api.
 
 ### Quick Start with Docker
 
